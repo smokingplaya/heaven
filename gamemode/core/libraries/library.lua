@@ -1,10 +1,18 @@
+---@class Library
+---@field name string
+---@field authors table<number, string>
 local library = {}
 library.__index = library
 
-RegisterMetaTable("Library", library)
+---@param authorList table<number, string>
+---@return Library
+function library:setAuthors(authorList)
+  self.authors = authorList;
 
----@class Library
----@field name string
+  return self
+end
+
+RegisterMetaTable("Library", library)
 
 heaven.lib = heaven.lib or {}
 ---@type table<string, Library | nil>
@@ -14,7 +22,8 @@ heaven.lib.items = heaven.lib.items or {}
 ---@return Library
 function heaven.lib:new(name)
   local lib = setmetatable({
-    name = name
+    name = name,
+    authors = {}
   }, library)
 
   self.items[name] = lib

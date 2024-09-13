@@ -14,3 +14,4 @@ local function loadShared(path)
 end
 
 loadShared("libraries/library.lua")
+loadShared("libraries/metamap.lua")
