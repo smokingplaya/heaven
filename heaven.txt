@@ -1,0 +1,7 @@
+"heaven"
+{
+  "base"      "base"
+  "title"     "Heaven Base Gamemode"
+  "maps"      "^gm_"
+  "category"  "other"
+}
