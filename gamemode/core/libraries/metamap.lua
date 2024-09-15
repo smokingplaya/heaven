@@ -1,24 +1,24 @@
 --- Syntax sugar library
---- @class metamapLibrary: Library
+--- @class MetamapLibrary: Library
 metamap = heaven.lib:new("metamap")
   :setAuthors({
     key = "smokingplaya"
   })
 
----@class metamap
+---@class MetaMap
 local metamap_mt = {}
 metamap_mt.__index = metamap_mt
 
 -- Makes table functional
 ---@param tab table
----@return metamap
+---@return MetaMap
 function metamap.new(tab)
   return setmetatable(tab, metamap_mt)
 end
 
 --- Returns functional table with all players on the server
----@return metamap
-function metamap.GetPlayers()
+---@return MetaMap
+function metamap.getPlayers()
   return metamap.new(player.GetAll())
 end
 

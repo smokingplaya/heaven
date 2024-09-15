@@ -13,5 +13,10 @@ local function loadShared(path)
   return include(path)
 end
 
+// Именно такой порядок загрузки должен быть
 loadShared("libraries/library.lua")
+loadShared("libraries/util.lua")
+loadShared("libraries/log.lua")
+
+// Остальные либы
 loadShared("libraries/metamap.lua")
