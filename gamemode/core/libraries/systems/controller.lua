@@ -4,9 +4,10 @@ controller = {}
 ---@class Controller
 ---@field name string
 ---@field services table<string, Service>
+---@field system System
 local controllerClass = {
   aliasesHook = {
-    playerJoin = "PlayerInitialSpawn"
+    playerJoined = "PlayerInitialSpawn"
   }
 }
 controllerClass.__index = controllerClass
@@ -16,9 +17,22 @@ RegisterMetaTable("Controller", controllerClass)
 ---@param name string
 ---@return Controller
 function controller.new(name)
+  local systemPath = debug.getinfo(2).short_src:match("^(.-)/controller/")
+
+  if (!systemPath) then
+    error("You're using the controller where you shouldn't!")
+  end
+
+  local system = systems.getByPath(systemPath)
+
+  if (!system) then
+    error("Unable to find currents controller system!")
+  end
+
   return setmetatable({
     name = name,
     services = {},
+    system = system
   }, controllerClass)
 end
 
@@ -31,8 +45,15 @@ function controllerClass:addService(name)
     return self
   end
 
-  // todo @
-  self.services[name] = include("")
+  local servicePath = (self.system.path .. "service/" .. name .. ".lua"):Replace("gamemodes/", "")
+  local service = include(servicePath)
+
+  if (!service) then
+    error("Couldn't get service from file " .. servicePath)
+  end
+
+  // так надо
+  self.services[name] = service
 
   return self
 end
@@ -48,7 +69,7 @@ end
 ---@private
 ---@param name string
 function controllerClass:getHookId(name)
-  return self.name + ":" + name
+  return self.name .. ":" .. name
 end
 
 --- Pushes only one hook listener via hook.Add

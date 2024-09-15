@@ -7,11 +7,11 @@ local services = controller.services
 local renderService = services.render
 
 controller:hook("playerJoined", function(client)
-
+  log.trace(client:GetName() .. " joined to the server")
 end)
 
 controller:command(function(executor, arguments)
 
 end, "god", "player.god", {
-  controller.command.argument.new("player", "Player", true)
+  -- controller.command.argument.new("player", "Player", true)
 })

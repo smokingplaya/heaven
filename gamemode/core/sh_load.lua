@@ -8,8 +8,10 @@ IncludeCS("libraries/library.lua")
 IncludeCS("libraries/loader.lua")
 
 // Именно такой порядок загрузки должен быть
-loader.loadShared("libraries/util.lua")
+loader.loadShared("libraries/utils.lua")
 loader.loadShared("libraries/log.lua")
+
+log.info("🚀 Heaven is loading...")
 
 // Other libraries
 loader.loadShared("libraries/metamap.lua")
@@ -18,3 +20,5 @@ loader.loadShared("libraries/metamap.lua")
 loader.loadShared("libraries/systems/system.lua")
 loader.loadShared("libraries/systems/controller.lua")
 loader.loadShared("libraries/systems/service.lua")
+
+systems.load()

@@ -3,5 +3,5 @@ local system = systems.new("clan")
   :setDescription("A clan system")
   :setVersion("1.0.0")
 
-system:addClientService("service/render")
-system:addClientController("controller/player")
+system:addClientService("service/render.lua")
+system:addClientController("controller/player.lua")
