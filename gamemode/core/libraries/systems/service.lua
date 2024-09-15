@@ -2,12 +2,12 @@
 service = {}
 
 ---@class Service
-local service_mt = {}
-service_mt.__index = service_mt
+local serviceClass = {}
+serviceClass.__index = serviceClass
 
-RegisterMetaTable("Service", service_mt)
+RegisterMetaTable("Service", serviceClass)
 
 ---@return Service
 function service.new()
-  return setmetatable({}, service_mt)
+  return setmetatable({}, serviceClass)
 end

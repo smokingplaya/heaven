@@ -1,19 +1,17 @@
 --- Syntax sugar library
 --- @class MetamapLibrary: Library
 metamap = heaven.lib:new("metamap")
-  :setAuthors({
-    key = "smokingplaya"
-  })
+  :setAuthors({"smokingplaya"})
 
 ---@class MetaMap
-local metamap_mt = {}
-metamap_mt.__index = metamap_mt
+local metamapClass = {}
+metamapClass.__index = metamapClass
 
 -- Makes table functional
 ---@param tab table
 ---@return MetaMap
 function metamap.new(tab)
-  return setmetatable(tab, metamap_mt)
+  return setmetatable(tab, metamapClass)
 end
 
 --- Returns functional table with all players on the server
@@ -24,7 +22,7 @@ end
 
 ---Enumerates the entire numbered table and returns a pair of values in the callback arguments (see foreach in javascript)
 ---@param callback fun(v: any, k: number): boolean | nil
-function metamap_mt:foreach(callback)
+function metamapClass:foreach(callback)
   for k, v in ipairs(self) do
     if (callback(v, k)) then
       break

@@ -1,3 +1,5 @@
+---@alias ScriptSide '"client"' | '"shared"' | '"server"'
+
 if (!printBackup) then
   printBackup = print
 

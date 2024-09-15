@@ -1,7 +1,9 @@
-local controller = controller.new()
+local controller = controller.new("player")
   :addService("render")
 
 local services = controller.services
+---@type RenderService
+---@diagnostic disable-next-line: assign-type-mismatch
 local renderService = services.render
 
 controller:hook("playerJoined", function(client)

@@ -2,6 +2,7 @@
 --- The idea was taken from the rust crate log (https://docs.rs/log/latest/log/enum.Level.html)
 ---@class LogLibrary: Library
 log = heaven.lib:new("log")
+  :setAuthors({"smokingplaya"})
 
 ---@protected
 function log.getTime()

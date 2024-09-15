@@ -3,20 +3,18 @@ heaven = heaven or {
   repository = "https://github.com/smokingplaya/heaven"
 }
 
----@param path string
----@return ...
-local function loadShared(path)
-  if (SERVER) then
-    AddCSLuaFile(path)
-  end
-
-  return include(path)
-end
+// Loading loader library
+IncludeCS("libraries/library.lua")
+IncludeCS("libraries/loader.lua")
 
 // Именно такой порядок загрузки должен быть
-loadShared("libraries/library.lua")
-loadShared("libraries/util.lua")
-loadShared("libraries/log.lua")
+loader.loadShared("libraries/util.lua")
+loader.loadShared("libraries/log.lua")
 
-// Остальные либы
-loadShared("libraries/metamap.lua")
+// Other libraries
+loader.loadShared("libraries/metamap.lua")
+
+// System: Controller, Service
+loader.loadShared("libraries/systems/system.lua")
+loader.loadShared("libraries/systems/controller.lua")
+loader.loadShared("libraries/systems/service.lua")
