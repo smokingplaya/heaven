@@ -12,7 +12,7 @@ function loader.loadClient(filename)
   return include(filename)
 end
 
----@param filename string The filename of the Lua file you want to include.
+---@param filename string
 ---@return any ...
 function loader.loadShared(filename)
   if (SERVER) then
