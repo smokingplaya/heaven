@@ -20,5 +20,7 @@ loader.loadShared("libraries/metamap.lua")
 loader.loadShared("libraries/systems/system.lua")
 loader.loadShared("libraries/systems/controller.lua")
 loader.loadShared("libraries/systems/service.lua")
+// HTTP
+loader.loadShared("libraries/web/lib.lua")
 
 systems.load()

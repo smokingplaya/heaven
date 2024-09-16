@@ -16,6 +16,7 @@ local function isEmpty(value)
   return false
 end
 
+-- todo: rewrite
 if (!printBackup) then
   printBackup = print
 
@@ -41,22 +42,19 @@ if (!printBackup) then
   end
 end
 
---- Pulls through the debug library the path to the file that calls the current function
----@deprecated
----@return string
-function utils.getStackSource()
-  local level = 1
-  local caller;
-
-  while (true) do
-    local info = debug.getinfo(level)
-    if (!info) then
-      break
-    end
-
-    caller = info
-    level = level+1
+--- Uses "require" lua function to load binary modules to server
+---
+--- ```lua
+--- if (SERVER) then
+---   util.loadBinaryModule("chttp")
+--- end
+--- ```
+---@param name string Name of the binary module
+function utils.loadBinaryModule(name)
+  if (!util.IsBinaryModuleInstalled(name)) then
+    log.error("Unable to find dynamic library \"" .. name .. "\"")
+    return
   end
 
-  return caller.short_src
+  require(name)
 end

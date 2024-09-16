@@ -66,6 +66,7 @@ function controllerClass:getHookName(name)
   return self.aliasesHook[name] or name
 end
 
+--- todo: can create collisions
 ---@private
 ---@param name string
 function controllerClass:getHookId(name)
