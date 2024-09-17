@@ -43,6 +43,7 @@ function response.new(
   headers
 )
   return setmetatable({
+    url = url,
     code = reasonOrCode,
     body = body,
     headers = headers
@@ -54,14 +55,14 @@ end
 --- Is response status error
 ---@return boolean
 function responseClass:isError()
-  return type(self.code) == "string" or self.code >= 400
+  return type(self.code) == "string" or (self.code and self.code >= 400)
 end
 
 --- Returns the error string if there is an error
 ---@return string | nil
 function responseClass:getError()
   ---@diagnostic disable-next-line: return-type-mismatch
-  return (type(self.code) == "string" and self.code) or (self.code >= 400 and self:getRawBody())
+  return (type(self.code) == "string" and self.code) or (self.code and self.code >= 400 and self:getRawBody())
 end
 
 --- Returns the body of the response without processing
@@ -82,5 +83,5 @@ end
 
 --- Prints an http response error using the log library. Does not block the thread
 function responseClass:logError()
-  log.error("An error occurred while executing an http request: " + self:getError())
+  log.error("An error occurred while executing an http request (" .. self.url .. "): " .. self:getError())
 end
