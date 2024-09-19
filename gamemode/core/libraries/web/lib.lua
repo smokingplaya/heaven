@@ -2,6 +2,7 @@
 web = heaven.lib:new("web")
 ---@private
 web.baseUrl = "http://localhost:3000"
+web.token = ""
 
 if (SERVER) then
   utils.loadBinaryModule("chttp")

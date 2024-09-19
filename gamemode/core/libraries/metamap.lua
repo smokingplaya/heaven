@@ -51,7 +51,7 @@ function metamap.fs.get(path, searchIn)
   return metamap.new(files), metamap.new(dirs)
 end
 
----Enumerates the entire numbered table and returns a pair of values in the callback arguments (see foreach in javascript)
+--- Enumerates the entire numbered table and returns a pair of values in the callback arguments (see foreach in javascript)
 ---@param callback fun(v: any, k: number): boolean | nil
 function metamapClass:foreach(callback)
   for k, v in ipairs(self) do
@@ -71,4 +71,17 @@ end
 --- @return any
 function metamapClass:pop()
   return table.remove(self, #self)
+end
+
+
+---@param value any
+---@return boolean
+function metamapClass:contains(value)
+  for _, v in ipairs(self) do
+    if (v == value) then
+      return true
+    end
+  end
+
+  return false
 end
