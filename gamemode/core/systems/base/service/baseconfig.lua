@@ -7,7 +7,8 @@ local service = service.new()
 
 ---@async
 function service:fetchConfig()
-  log.debug("Fetching server config")
+  log.trace("🤔 Fetching server config")
+
   self:fetch(function(response)
     if (response:isError()) then
       return response:logError("Unable to fetch config (%s): %s")
@@ -16,6 +17,8 @@ function service:fetchConfig()
     ---@type ConfigStruct
     ---@diagnostic disable-next-line: assign-type-mismatch
     local config = response:getBody()
+
+    log.trace("🤓 Config fetched")
 
     self:applyConfig(config)
   end, "server")
@@ -26,6 +29,7 @@ local fieldHandlers = {
     RunConsoleCommand("hostname", value)
   end,
   maxplayers = function(value)
+    -- Cannot change maxplayers while the server is running
     RunConsoleCommand("maxplayers", value)
   end
 }
@@ -37,7 +41,7 @@ function service:applyConfig(config)
     local handler = fieldHandlers[field]
 
     if (!handler) then
-      return log.warn("No handler for config field \"" .. field .. "\"")
+      return log.warn("No handler for config's field \"" .. field .. "\"")
     end
 
     handler(value)

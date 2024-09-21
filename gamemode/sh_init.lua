@@ -13,4 +13,4 @@ local startTime = SysTime()
 
 include("core/sh_load.lua")
 
-log.debug("Gamemode loaded for " .. math.Round(SysTime()-startTime, 4) .. "s")
+log.debug("😲 Gamemode loaded for " .. math.Round(SysTime()-startTime, 4) .. "s")

@@ -28,7 +28,7 @@ function service:registerRole(role)
 
   self.roles[role.id] = roleObject
 
-  log.trace(("The role %s (%s) has been registered"):format(role.id, role.localizedName))
+  log.trace(("[+] The role 👨 %s (%s) has been registered"):format(role.id, role.localizedName))
 
   return roleObject
 end
