@@ -6,3 +6,5 @@ systems.new("base")
   // rbac
   :addSharedController("controller/rolemanager.lua")
   :addSharedService("service/rolemanager.lua")
+
+  :addServerController("controller/baseconfig.lua")

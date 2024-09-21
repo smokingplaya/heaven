@@ -81,7 +81,9 @@ function responseClass:getBody()
     -- ;)
 end
 
+local defaultMessage = "An error occurred while executing an http request (%s): %s"
 --- Prints an http response error using the log library. Does not block the thread
-function responseClass:logError()
-  log.error("An error occurred while executing an http request (" .. self.url .. "): " .. self:getError())
+--- @param message? string
+function responseClass:logError(message)
+  log.error((message or defaultMessage):format(self.url, self:getError()))
 end
