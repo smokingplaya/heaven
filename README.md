@@ -6,6 +6,8 @@ Our code guide is based on javascript code practices.
 1. Use camel case in variable names, table values, and anything else. (do not use the snake case anywhere or for any cost whatsoever, it's ugly)
 2. Make full use of [LuaLS](https://wiki.facepunch.com/gmod/LuaLanguageServer) wherever possible.
 3. All data operations should not be performed by the game server, instead use a remote web server that will manage all data. (our framework is designed for this).
+4. Your code needs to be optimized.
+5. Don't reinvent the wheel. Before implementing any functionality, make sure it doesn't already exist.
 
 # Contributions
 All Contributions to our project are welcome!\
