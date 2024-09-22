@@ -7,4 +7,5 @@ systems.new("base")
   :addSharedController("controller/rolemanager.lua")
   :addSharedService("service/rolemanager.lua")
 
-  :addServerController("controller/baseconfig.lua")
+  :addServerController("controller/serverconfig.lua")
+  :addServerController("controller/physics.lua")

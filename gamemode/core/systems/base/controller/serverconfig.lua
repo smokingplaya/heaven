@@ -1,9 +1,9 @@
 local controller = controller.new("baseconfig")
-  :addService("baseconfig")
+  :addService("serverconfig")
 
 local services = controller.services
----@type BaseConfigService
+---@type ServerConfigService
 ---@diagnostic disable-next-line: assign-type-mismatch
-local baseconfigService = services.baseconfig
+local serverconfigService = services.serverconfig
 
-baseconfigService:fetchConfig()
+serverconfigService:fetchConfig()

@@ -1,4 +1,4 @@
----@class BaseConfigService: Service
+---@class ServerConfigService: Service
 local service = service.new()
 
 ---@class ConfigStruct
@@ -28,10 +28,12 @@ local fieldHandlers = {
   hostname = function(value)
     RunConsoleCommand("hostname", value)
   end,
-  maxplayers = function(value)
-    -- Cannot change maxplayers while the server is running
-    RunConsoleCommand("maxplayers", value)
-  end
+  realisticFallDamage = function(value)
+    RunConsoleCommand("sv_realfalldamage", value and 1 or 0)
+  end,
+  realisticFallDamageMultiplier = function(value)
+    RunConsoleCommand("sv_realfalldamagemultiplier", value)
+  end,
 }
 
 ---@private
@@ -41,7 +43,7 @@ function service:applyConfig(config)
     local handler = fieldHandlers[field]
 
     if (!handler) then
-      return log.warn("No handler for config's field \"" .. field .. "\"")
+      return log.warn("😡 No handler for config's field \"" .. field .. "\"")
     end
 
     handler(value)

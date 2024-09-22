@@ -2,3 +2,5 @@
 
 # ma file to start srcds on linux
 start.sh
+# backend file
+index.ts
