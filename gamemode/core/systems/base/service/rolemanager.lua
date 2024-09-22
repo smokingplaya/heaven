@@ -77,8 +77,22 @@ function service:restorePlayerRole(player)
   })
 end
 
--- Player metatable functions
--- todo @ Fields cannot be injected into the reference of `Player` for `getRole`. To do so, use `---@class` for `playerClass`.
+// Role class metamethods
+
+---@return string
+function roleClass:getId()
+  return self.id
+end
+
+roleClass.getName = roleClass.getId
+
+---@return string
+function roleClass:getLocalizedName()
+  return self.localizedName
+end
+
+// Player metatable functions
+// todo @ Fields cannot be injected into the reference of `Player` for `getRole`. To do so, use `---@class` for `playerClass`.
 
 ---@type Player
 local playerClass = FindMetaTable("Player")

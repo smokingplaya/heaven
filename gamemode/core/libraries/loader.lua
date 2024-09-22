@@ -1,6 +1,6 @@
 ---@class LoaderLibrary: Library
 loader = heaven.lib:new("loader")
-  :setAuthors({"smokingplaya"})
+  :setAuthors("smokingplaya")
 
 ---@param filename string
 ---@return any ...

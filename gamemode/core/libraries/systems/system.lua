@@ -63,10 +63,10 @@ end
 /// Metadata
 
 --- Sets authors of the system
----@param authors table<number, string>
+---@param ... string List of authors
 ---@return System
-function systemClass:setAuthors(authors)
-  self.authors = authors
+function systemClass:setAuthors(...)
+  self.authors = {...}
 
   return self
 end

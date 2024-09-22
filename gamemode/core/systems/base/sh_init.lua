@@ -1,5 +1,5 @@
 systems.new("base")
-  :setAuthors({"smokingplaya"})
+  :setAuthors("smokingplaya")
   :setDescription("Basic gamemode functionality.")
   :setVersion("1.0.0")
 

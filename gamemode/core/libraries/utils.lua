@@ -2,7 +2,7 @@
 
 ---@class UtilsLibrary: Library
 utils = heaven.lib:new("utils")
-  :setAuthors({"smokingplaya"})
+  :setAuthors("smokingplaya")
 
 ---@param value any
 ---@return boolean

@@ -4,10 +4,10 @@
 local library = {}
 library.__index = library
 
----@param authorList table<number, string>
+---@param ... string List of authors
 ---@return Library
-function library:setAuthors(authorList)
-  self.authors = authorList;
+function library:setAuthors(...)
+  self.authors = {...};
 
   return self
 end

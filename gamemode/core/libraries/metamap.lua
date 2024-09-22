@@ -1,7 +1,7 @@
 --- Syntax sugar library
 --- @class MetamapLibrary: Library
 metamap = heaven.lib:new("metamap")
-  :setAuthors({"smokingplaya"})
+  :setAuthors("smokingplaya")
 
 ---@class MetaMap
 local metamapClass = {}
