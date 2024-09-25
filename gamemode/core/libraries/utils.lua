@@ -16,31 +16,31 @@ local function isEmpty(value)
   return false
 end
 
--- todo: rewrite
-if (!printBackup) then
-  printBackup = print
+if (!CLuaPrint) then
+  CLuaPrint = print
+end
 
-  ---@param ... any
-  function print(...)
-    local args = {...}
+---@param ... any
+function print(...)
+  local args = {...}
 
-    if (#args == 0) then
-      return printBackup("nil value")
-    end
+  if (#args == 0) then
+    return CLuaPrint("nil value")
+  end
 
-    if (#args == 1 and (isEmpty(args[1]))) then
-      return printBackup("empty " .. type(args[1]))
-    end
+  if (#args == 1 and (isEmpty(args[1]))) then
+    return CLuaPrint("empty " .. type(args[1]))
+  end
 
-    for _, value in ipairs(args) do
-      if type(value) == "table" then
-        PrintTable(value)
-      else
-        printBackup(value)
-      end
+  for _, value in ipairs(args) do
+    if type(value) == "table" then
+      PrintTable(value)
+    else
+      CLuaPrint(value)
     end
   end
 end
+
 
 --- Uses "require" lua function to load binary modules to server
 ---

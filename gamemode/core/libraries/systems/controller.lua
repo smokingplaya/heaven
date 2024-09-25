@@ -6,8 +6,16 @@ controller = {}
 ---@field services table<string, Service>
 ---@field system System
 local controllerClass = {
+  --- Example:
+  --- ```lua
+  --- FindMetaTable("Controller").drawHud = "HUDPaint"
+  ---
+  --- controller:hook("drawHud", function()
+  --- end)
+  --- ```
   aliasesHook = {
-    playerJoined = "PlayerInitialSpawn"
+    playerJoined = "PlayerInitialSpawn",
+    playerNoclip = "PlayerNoClip"
   }
 }
 controllerClass.__index = controllerClass

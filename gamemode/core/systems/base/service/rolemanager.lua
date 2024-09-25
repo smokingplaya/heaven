@@ -92,9 +92,8 @@ function roleClass:getLocalizedName()
 end
 
 // Player metatable functions
-// todo @ Fields cannot be injected into the reference of `Player` for `getRole`. To do so, use `---@class` for `playerClass`.
 
----@type Player
+---@class Player
 local playerClass = FindMetaTable("Player")
 
 playerClass.getRole = playerClass.GetUserGroup
@@ -106,7 +105,7 @@ function playerClass:setRole(role)
 
   self:SetUserGroup(role)
 
-  service:fetch(emptyFunction, "server/role", "PATCH", {
+  service:fetch(function() end, "server/role", "PATCH", {
     id = self:SteamID64(),
     new = role
   })

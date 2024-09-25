@@ -10,6 +10,12 @@ local roleManager = services.rolemanager
 
 roleManager:loadRoles()
 
-controller:hook("playerJoined", function(pl)
+---@param player Player
+controller:hook("playerJoined", function(player)
   roleManager:restorePlayerRole(pl)
+end)
+
+---@param player Player
+controller:hook("playerNoclip", function(player)
+  return player:hasPermission("noclip")
 end)
