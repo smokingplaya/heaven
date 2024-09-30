@@ -34,5 +34,5 @@ end
 ---@param name string
 ---@return Library | nil
 function heaven.lib:get(name)
-  return self.items[name]
+  return self.items[name] or error(("Unable to find library \"%s\""):format(name))
 end

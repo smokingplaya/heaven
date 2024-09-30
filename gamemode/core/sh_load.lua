@@ -3,8 +3,6 @@ heaven = heaven or {
   repository = "https://github.com/smokingplaya/heaven"
 }
 
-log.info("🚀 Heaven framework is loading...")
-
 // Loading loader library
 IncludeCS("libraries/library.lua")
 IncludeCS("libraries/loader.lua")
@@ -13,6 +11,8 @@ IncludeCS("libraries/loader.lua")
 loader.loadShared("libraries/utils.lua")
 loader.loadShared("libraries/log.lua")
 loader.loadShared("libraries/language.lua")
+
+log.info("🚀 Heaven framework is loading...")
 
 // Other libraries
 loader.loadShared("libraries/metamap.lua")
